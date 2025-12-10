@@ -1,0 +1,73 @@
+<form class="registration-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="registration-form-header">
+        <h2>Registration Form</h2>
+    </div>
+    <div class="form-row">
+        <label>Full Name: </label>
+        <input type="text" formControlName="fullName" />
+        <div class="error-message">
+        @if (isControlInvalid('fullName')) {
+        Full Name is required
+        }
+        </div>
+    </div>
+    <div class="form-row">
+        <label>Email: </label>
+        <input type="text" formControlName="email" />
+        <div class="error-message">
+        @if (isControlInvalid('email')) {
+        Email is invalid
+        }
+        </div>
+    </div>
+    <div class="form-row">
+        <label>Password: </label>
+        <input type="password" formControlName="password" />
+        <div class="error-message">
+        @if (isControlInvalid('password')) {
+        Password is required
+        }
+        </div>
+    </div>
+    <div class="form-row">
+        <label>Confirm Password: </label>
+        <input type="password" formControlName="confirmPassword" />
+        <div class="error-message">
+        @if (isPasswordMismatch()) {
+        Passwords do not match
+        }
+        </div>
+    </div>
+    <div class="form-row">
+        <label>Age: </label>
+        <input type="number" formControlName="age" />
+        @if (isControlInvalid('age')) {
+            Age is expected to be above 18
+        }
+    </div>
+    <div formGroupName="address">
+        <div class="form-row">
+            <label>Street: </label>
+            <input type="text" formControlName="street" />
+            @if (isControlInvalid('address.street')) {
+            Street is required
+        }
+        </div>
+        <div class="form-row">
+            <label>City: </label>
+            <input type="text" formControlName="city" />
+            @if (isControlInvalid('address.city')) {
+            City is required
+        }
+        </div>
+        <div class="form-row">
+            <label>Postal Code: </label>
+            <input type="text" formControlName="postalCode" />
+            @if (isControlInvalid('address.postalCode')) {
+            Postal code is expected to be 5 digits
+        }
+        </div>
+    </div>
+    <button mat-raised-button [disabled]="!registrationForm.touched" (click)="resetForm()">Reset</button>
+    <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+</form>
