@@ -45,6 +45,9 @@ export class RegistrationFormComponent {
 
   resetForm(): void {
     this.registrationForm.reset();
+    this.registrationForm.markAsUntouched();
+    this.registrationForm.markAsPristine();
+    this.registrationForm.updateValueAndValidity();
   }
 
   isPasswordMismatch(): boolean {

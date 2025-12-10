@@ -68,6 +68,6 @@
         }
         </div>
     </div>
-    <button mat-raised-button [disabled]="!registrationForm.touched" (click)="resetForm()">Reset</button>
+    <button type="reset" mat-raised-button [disabled]="!registrationForm.touched" (click)="resetForm()">Reset</button>
     <button type="submit" [disabled]="registrationForm.invalid">Register</button>
 </form>
